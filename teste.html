@@ -1,0 +1,8 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Teste de conexão</title>
+<style>body{font-family:-apple-system,Arial,sans-serif;padding:24px;font-size:18px}.ok{color:#1a7f37}.err{color:#b42318}</style>
+<script src="config.js"></script></head><body><h2>Teste de conexão</h2><p id="r">Testando...</p>
+<script>
+fetch(API+'?action=ping&t='+Date.now()).then(function(r){return r.json()}).then(function(j){
+ document.getElementById('r').innerHTML=j.ok?'<b class="ok">✔ Funcionou!</b><br>'+j.mensagem:'<b class="err">✖ O servidor respondeu com erro:</b><br>'+(j.erro||'');
+}).catch(function(e){document.getElementById('r').innerHTML='<b class="err">✖ Não conseguiu falar com o servidor.</b><br>Confira o endereço em config.js e se a implantação está como "Qualquer pessoa".';});
+</script></body></html>
